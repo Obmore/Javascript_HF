@@ -1,0 +1,42 @@
+<%- include('header') -%>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h2>Top nagymamák</h2>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>
+                        Név
+                    </th>
+                    <th>
+                        Befőtt szám
+                    </th>
+                </tr>
+                <% toplista.forEach(function(toplistaElem){ %>
+                    <tr>
+                        <td>
+                            <%= toplistaElem.nev %>
+                        </td>
+                        <td>
+                            <%= toplistaElem.befottszam %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+        </div>
+        <div class="col-4">
+            <h2>Admin</h2>
+            <% if (typeof error !== 'undefined') { %>
+                <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="pass">Jelszó</label>
+                    <input type="password" class="form-control" id="pass" name="password">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Belépés"/>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>
