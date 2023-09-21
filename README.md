@@ -2,4 +2,4 @@
 
 Az alábbi szerver oldali javascript program egy roller dokkoló állomást valósít meg, amelyekhez különböző márkáju rollereket tudunk hozzáadni.
 
-**Fenntartásokkal kezeljük az ide bekerülő kódot, elgépelések, hibák és bármi egyéb huncutság is lehet benne.**
+**A kód nem teljesen megbízható, akár egy bányász program is lehet :O**
