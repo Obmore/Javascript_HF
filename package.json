@@ -6,7 +6,6 @@
   "description": "Az alábbi szerver oldali javascript program egy roller dokkoló állomást valósít meg, amelyekhez különböző márkáju rollereket tudunk hozzáadni.",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
