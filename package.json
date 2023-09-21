@@ -1,22 +1,15 @@
 {
-  "name": "mintahazi2019tavasz",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "name": "javascript_hf",
+  "description": "Az alábbi szerver oldali javascript program egy roller dokkoló állomást valósít meg, amelyekhez különböző márkáju rollereket tudunk hozzáadni.",
   "version": "1.0.0",
-  "description": "Szeretnénk egy rendszert, ahol nagymamámakat és befőtteket adminisztrálunk, minden befőtt pontosan egy nagymamához tartozik.",
   "main": "index.js",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VITMAV42/mintahazi2019tavasz.git"
-  },
-  "author": "Zsombor Paroczi",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/VITMAV42/mintahazi2019tavasz/issues"
-  },
-  "homepage": "https://github.com/VITMAV42/mintahazi2019tavasz#readme",
-  "dependencies": {
-    "express": "^4.16.4"
-  }
+  "author": "",
+  "license": "ISC"
 }
