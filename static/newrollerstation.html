@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-widtSh, initial-scale=1.0">
+    <title>Roller Stations - Edit Stations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-dark .navbar-toggler-icon {
+            background-color: #fff;
+        }
+        .navbar-dark .navbar-toggler:focus, .navbar-dark .navbar-toggler:hover {
+            background-color: #292e33;
+        }
+        .navbar-dark .navbar-toggler {
+            border-color: #fff;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #ccc;
+        }
+        .jumbotron {
+            background-color: #3498db;
+            color: #fff;
+            padding: 40px;
+            margin-top: 20px;
+        }
+        .jumbotron h1 {
+            font-size: 36px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/rollerstation.html">Roller Stations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.html">Exit</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Edit or Add new Roller Stations</h2>
+            <form>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address">
+                </div>
+                <div class="form-group">
+                    <label for="id">Id</label>
+                    <input type="text" class="form-control" id="id" name="id">
+                </div>
+                <div class="form-group">
+                    <label for="capacity">Capacity</label>
+                    <input type="text" class="form-control" id="capacity" name="capacity">
+                </div>
+                <a class="btn btn-primary" href="/rollerstation.html">Save</a>
+                <a class="btn btn-danger" href="/rollerstation.html">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
