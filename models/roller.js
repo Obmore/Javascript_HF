@@ -2,9 +2,11 @@ const Schema = require('mongoose').Schema;
 const db = require('../config/db');
 
 const Roller = db.model('Roller', {
-    iz: String,
-    ev: Number,
-    rating: String,
+    Type: String,
+    id: Number,
+    brand: String,
+    price: Number,
+    available: Boolean,
     _station: {
         type: Schema.Types.ObjectId,
         ref: 'RollerStation'
