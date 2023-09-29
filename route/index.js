@@ -5,7 +5,6 @@ const checkPassMW = require('../middleware/auth/checkPassMW');
 const logoutMW = require('../middleware/auth/logoutMW');
 const renderMW = require('../middleware/renderMW');
 
-const getTopRollerStationsMW = require('../middleware/rollerstation/getTopRollerStationsMW');
 const getRollerStationsMW = require('../middleware/rollerstation/getRollerStationsMW');
 const getRollerStationMW = require('../middleware/rollerstation/getRollerStationMW');
 const delRollerStationMW = require('../middleware/rollerstation/delRollerStationMW');
@@ -87,11 +86,5 @@ module.exports = function(app) {
 
     app.use('/logout', 
     logoutMW(objRepo)
-    );
-
-    app.use('/', 
-    getTopRollerStationsMW(objRepo), 
-    checkPassMW(objRepo), 
-    renderMW(objRepo, 'index')
     );
 };
