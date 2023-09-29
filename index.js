@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 app.use(express.static('static'));
+app.set('view engine', 'ejs')
 
 // Load routing
 require('./route/index')(app);

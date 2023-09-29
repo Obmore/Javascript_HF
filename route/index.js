@@ -1,84 +1,97 @@
+// We have to collect the middlewares
+
 const authMW = require('../middleware/auth/authMW');
 const checkPassMW = require('../middleware/auth/checkPassMW');
 const logoutMW = require('../middleware/auth/logoutMW');
 const renderMW = require('../middleware/renderMW');
-const delBefottMW = require('../middleware/befott/delBefottMW');
-const getBefottekMW = require('../middleware/befott/getBefottekMW');
-const getBefottMW = require('../middleware/befott/getBefottMW');
-const saveBefottMW = require('../middleware/befott/saveBefottMW');
-const delNagymamaMW = require('../middleware/nagymama/delNagymamaMW');
-const getNagymamakMW = require('../middleware/nagymama/getNagymamakMW');
-const getNagymamaMW = require('../middleware/nagymama/getNagymamaMW');
-const getTopNagymamakMW = require('../middleware/nagymama/getTopNagymamakMW');
-const saveNagymamaMW = require('../middleware/nagymama/saveNagymamaMW');
 
-const NagymamaModel = require('../models/nagymama');
-const BefottModel = require('../models/befott');
+const getTopRollerStationsMW = require('../middleware/rollerstation/getTopRollerStationsMW');
+const getRollerStationsMW = require('../middleware/rollerstation/getRollerStationsMW');
+const getRollerStationMW = require('../middleware/rollerstation/getRollerStationMW');
+const delRollerStationMW = require('../middleware/rollerstation/delRollerStationMW');
+const saveRollerStationMW = require('../middleware/rollerstation/saveRollerStationMW');
 
+const getRollersMW = require('../middleware/roller/getRollersMW');
+const getRollerMW = require('../middleware/roller/getRollerMW');
+const delRollerMW = require('../middleware/roller/delRollerMW');
+const saveRollerMW = require('../middleware/roller/saveRollerMW');
+
+// For the DB
+const RollerStationModel = require('../models/rollerstation');
+const RollerModel = require('../models/roller');
+
+// Definition of the objectRepooooo
 module.exports = function(app) {
     const objRepo = {
-        NagymamaModel: NagymamaModel,
-        BefottModel: BefottModel
+        RollerStationModel: RollerStationModel,
+        RollerModel: RollerModel
     };
 
+    // Routes:
     app.use(
-        '/nagymama/new',
+        '/rollerstation/new',
         authMW(objRepo),
-        saveNagymamaMW(objRepo),
-        renderMW(objRepo, 'nagymamaeditnew')
+        saveRollerStationMW(objRepo),
+        renderMW(objRepo, 'rollerstationeditnew')
     );
     app.use(
-        '/nagymama/edit/:nagymamaid',
+        '/roller/edit/:rollerstationid',
         authMW(objRepo),
-        getNagymamaMW(objRepo),
-        saveNagymamaMW(objRepo),
-        renderMW(objRepo, 'nagymamaeditnew')
+        getRollerStationMW(objRepo),
+        saveRollerStationMW(objRepo),
+        renderMW(objRepo, 'rollerstationeditnew')
     );
     app.get(
-        '/nagymama/del/:nagymamaid',
+        '/rollerstation/del/:rollerstationid',
         authMW(objRepo),
-        getNagymamaMW(objRepo),
-        delNagymamaMW(objRepo)
+        getRollerStationMW(objRepo),
+        delRollerStationMW(objRepo)
     );
     app.get(
-        '/nagymama',
+        '/rollerstation',
         authMW(objRepo),
-        getNagymamakMW(objRepo),
-        renderMW(objRepo, 'nagymamalista')
+        getRollerStationsMW(objRepo),
+        renderMW(objRepo, 'rollerstationlista')
     );
 
     app.use(
-        '/befott/:nagymamaid/new',
+        '/roller/:rollerstationid/new',
         authMW(objRepo),
-        getNagymamaMW(objRepo),
-        saveBefottMW(objRepo),
-        renderMW(objRepo, 'befotteditnew')
+        getRollerStationMW(objRepo),
+        saveRollerMW(objRepo),
+        renderMW(objRepo, 'rollereditnew')
     );
     app.use(
-        '/befott/:nagymamaid/edit/:befottid',
+        '/roller/:rollerstationid/edit/:rollerid',
         authMW(objRepo),
-        getNagymamaMW(objRepo),
-        getBefottMW(objRepo),
-        saveBefottMW(objRepo),
-        renderMW(objRepo, 'befotteditnew')
+        getRollerStationMW(objRepo),
+        getRollerMW(objRepo),
+        saveRollerMW(objRepo),
+        renderMW(objRepo, 'rollereditnew')
     );
     app.get(
-        '/befott/:nagymamaid/del/:befottid',
+        '/roller/:rollerstationid/del/:rollerid',
         authMW(objRepo),
-        getNagymamaMW(objRepo),
-        getBefottMW(objRepo),
-        delBefottMW(objRepo),
-        renderMW(objRepo, 'befotteditnew')
+        getRollerStationMW(objRepo),
+        getRollerMW(objRepo),
+        delRollerMW(objRepo),
+        renderMW(objRepo, 'rollereditnew')
     );
     app.get(
-        '/befott/:nagymamaid',
+        '/roller/:rollerstationid',
         authMW(objRepo),
-        getNagymamaMW(objRepo),
-        getBefottekMW(objRepo),
-        renderMW(objRepo, 'egynagymamabefottjei')
+        getRollerStationMW(objRepo),
+        getRollersMW(objRepo),
+        renderMW(objRepo, 'rollersofrollerstation')
     );
 
-    app.use('/logout', logoutMW(objRepo));
+    app.use('/logout', 
+    logoutMW(objRepo)
+    );
 
-    app.use('/', getTopNagymamakMW(objRepo), checkPassMW(objRepo), renderMW(objRepo, 'index'));
+    app.use('/', 
+    getTopRollerStationsMW(objRepo), 
+    checkPassMW(objRepo), 
+    renderMW(objRepo, 'index')
+    );
 };

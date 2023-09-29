@@ -1,3 +1,4 @@
+const Schema = require('mongoose').Schema;
 const db = require('../config/db');
 
 const RollerStation = db.model('Roller Station', {
