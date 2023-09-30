@@ -23,9 +23,17 @@ module.exports = function(objectrepository) {
         if (typeof res.locals.roller === 'undefined') {
             res.locals.roller = new RollerModel();
         }
+
+        if (Number.isNaN(parseInt(req.body.price, 10))) {
+            return next(new Error('Az árat egy számmal kell megadni!'));
+        }
         
-        //TODO check types
-        // ????
+        res.locals.roller.type = req.body.type;
+        res.locals.roller.id = req.body.id;
+        res.locals.roller.brand = req.body.brand;
+        res.locals.roller.price = parseInt(req.body.price, 10);
+        res.locals.roller.available = req.body.available;
+        res.locals.roller._rental = res.locals.nagymama._id;
 
         res.locals.roller.save(err => {
             if (err) {

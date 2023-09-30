@@ -23,8 +23,9 @@ module.exports = function(objectrepository) {
             res.locals.rollerstation = new RollerStationModel();
         }
 
-        //TODO check types
-        // ????
+        res.locals.rollerstation.address = req.body.address;
+        res.locals.rollerstation.id = req.body.id;
+        res.locals.rollerstation.capacity = req.body.capacity;
 
         res.locals.rollerstation.save(err => {
             if (err) {
