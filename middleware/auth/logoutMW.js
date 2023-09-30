@@ -1,6 +1,5 @@
-/**
- * Destroy current session for the user and redirect to main page
- */
+// Destroy current session and go to main page
+
 const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {

@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
+// Load ejs files
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());

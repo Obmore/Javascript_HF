@@ -1,6 +1,4 @@
-/**
- * Using the template engine render the values into the template
- */
+// Using the template engine render the values into the template
 
 const requireOption = require('./requireOption');
 

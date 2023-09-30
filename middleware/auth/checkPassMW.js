@@ -1,7 +1,7 @@
-/**
- * Check the password (from POST), if it's the right one, create a session for the user and redirect to /rollerstation
- * if the password is wrong, pass down a 'error' key on res.locals to indicate error
- */
+// Check the password (from POST), if it's the right one, create a session for the user and redirect to /rollerstation
+// if the password is wrong, pass down a 'error' key on res.locals to indicate error
+
+
 const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {

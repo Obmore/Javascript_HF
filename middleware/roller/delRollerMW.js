@@ -1,7 +1,7 @@
-/**
- * Removes a roller from the database, the entity used here is: res.locals.roller
- * Redirects to /roller/:rollerstation_id after delete
- */
+
+// Removes a roller from the database, the entity used here is: res.locals.roller
+// Redirects to /roller/:rollerstation_id after delete
+
 const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {

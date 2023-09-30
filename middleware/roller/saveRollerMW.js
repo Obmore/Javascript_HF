@@ -1,8 +1,8 @@
-/**
- * Using POST params update or save a roller to the database
- * If res.locals.roller is there, it's an update otherwise this middleware creates an entity
- * Redirects to /roller/:rollerstation_id after success
- */
+
+// Using POST params update or save a roller to the database
+// If res.locals.roller is there, it's an update otherwise this middleware creates an entity
+// Redirects to /roller/:rollerstation_id after success
+
 const Roller = require('../../models/roller');
 const requireOption = require('../requireOption');
 
