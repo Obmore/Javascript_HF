@@ -87,4 +87,8 @@ module.exports = function(app) {
     app.use('/logout', 
     logoutMW(objRepo)
     );
+
+    app.use('/',
+    checkPassMW(objRepo), 
+    renderMW(objRepo, 'login'));
 };

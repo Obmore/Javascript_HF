@@ -3,8 +3,8 @@
 
 <div class="container mt-4">
     <div class="row">
-        <div class="col">
-            <h2 class="text-center">Rollers</h2>
+        <div class="col-12">
+            <h2>Rollers of <%= rollerstation.address %> station:</h2>
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -13,38 +13,39 @@
                     <th>Brand</th>
                     <th>Price $/Min</th>
                     <th>Available</th>
-                    <th>Action</th>
+                    <th>&nbsp;</th>
                 </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>ES3</td>
-                    <td>213123</td>
-                    <td>Acer</td>
-                    <td>1</td>
-                    <td><input type="checkbox" checked></td>
-                    <td>
-                        <a href="/newroller.html" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>KickScooter D18E</td>
-                    <td>46352</td>
-                    <td>Segway-Ninebot</td>
-                    <td>2.5</td>
-                    <td><input type="checkbox"></td>
-                    <td>
-                        <a href="/newroller.html" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                </tbody>
+                <% rollers.forEach(function(Roller){ %>
+                    <tr>
+                        <td>
+                            <%= Roller.type %>
+                        </td>
+                        <td>
+                            <%= Roller.id %>
+                        </td>
+                        <td>
+                            <%= Roller.brand %>
+                        </td>
+                        <td>
+                            <%= Roller.price %>
+                        </td>
+                        <td>
+                            <%= Roller.available %>
+                        </td>
+                        <td style="width:30px;white-space: nowrap">
+                            <a href="/befott/<%= rollerstation._id %>/edit/<%= Roller._id %>"
+                               class="btn btn-sm btn-primary"><i
+                                        class="far fa-edit"></i></a>
+                            <a href="/befott/<%= rollerstation._id %>/del/<%= Roller._id %>"
+                               class="btn btn-sm btn-danger"><i
+                                        class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                <% }); %>
             </table>
             <br/>
-            <a href="/newroller.html" class="btn btn-block btn-primary">Add new roller</a>
+            <a href="/roller/<%= rollerstation._id %>/new" class="btn btn-block btn-primary">Add new roller</a>
         </div>
     </div>
 </div>
-
 <%- include('footer') -%>

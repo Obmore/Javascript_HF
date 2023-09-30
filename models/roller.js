@@ -7,7 +7,7 @@ const Roller = db.model('Roller', {
     brand: String,
     price: Number,
     available: Boolean,
-    _station: {
+    _rental: {
         type: Schema.Types.ObjectId,
         ref: 'RollerStation'
     }
