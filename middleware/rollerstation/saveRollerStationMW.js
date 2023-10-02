@@ -1,11 +1,9 @@
-
 // Using POST params update or save a rollerstation to the database
 // If res.locals.rollerstation is there, it's an update otherwise
 // this middleware creates an entity
 // Redirects to /rollerstation after success
 
 const requireOption = require('../requireOption');
-
 
 module.exports = function(objectrepository) {
     const RollerStationModel = requireOption(objectrepository, 'RollerStationModel');
@@ -27,11 +25,21 @@ module.exports = function(objectrepository) {
         res.locals.rollerstation.id = req.body.id;
         res.locals.rollerstation.capacity = req.body.capacity;
 
-        res.locals.rollerstation.save(err => {
-            if (err) {
+        res.locals.rollerstation
+            .save()
+            .then(() => {
+                return res.redirect('/rollerstation');
+            })
+            .catch(err => {
                 return next(err);
-            }
-            return res.redirect('/rollerstation');
-        });
+            });
     };
 };
+
+
+
+
+
+
+
+

@@ -5,12 +5,13 @@ module.exports = function(objectrepository) {
     const RollerStationModel = requireOption(objectrepository, 'RollerStationModel');
 
     return function(req, res, next) {
-        RollerStationModel.find({}, (err, rollerstation) => {
-            if (err) {
+        RollerStationModel.find({})
+            .then(rollerstations => {
+                res.locals.rollerstations = rollerstations;
+                return next();
+            })
+            .catch(err => {
                 return next(err);
-            }
-            res.locals.rollerstation = rollerstation;
-            return next();
-        });
+            });
     };
 };

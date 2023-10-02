@@ -1,6 +1,6 @@
 const db = require('../config/db');
 
-const RollerStation = db.model('Roller Station', {
+const RollerStation = db.model('RollerStation', {
     address: String,
     id: Number,
     capacity: Number

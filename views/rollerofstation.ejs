@@ -30,13 +30,17 @@
                             <%= Roller.price %>
                         </td>
                         <td>
-                            <%= Roller.available %>
+                            <% if (Roller.available) { %>
+                                Yes
+                            <% } else { %>
+                                No
+                            <% } %>
                         </td>
                         <td style="width:30px;white-space: nowrap">
-                            <a href="/befott/<%= rollerstation._id %>/edit/<%= Roller._id %>"
+                            <a href="/roller/<%= rollerstation._id %>/edit/<%= Roller._id %>"
                                class="btn btn-sm btn-primary"><i
                                         class="far fa-edit"></i></a>
-                            <a href="/befott/<%= rollerstation._id %>/del/<%= Roller._id %>"
+                            <a href="/roller/<%= rollerstation._id %>/del/<%= Roller._id %>"
                                class="btn btn-sm btn-danger"><i
                                         class="far fa-trash-alt"></i></a>
                         </td>

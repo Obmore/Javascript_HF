@@ -2,7 +2,7 @@ const Schema = require('mongoose').Schema;
 const db = require('../config/db');
 
 const Roller = db.model('Roller', {
-    Type: String,
+    type: String,
     id: Number,
     brand: String,
     price: Number,

@@ -1,9 +1,7 @@
-
 // Using POST params update or save a roller to the database
 // If res.locals.roller is there, it's an update otherwise this middleware creates an entity
-// Redirects to /roller/:rollerstation_id after success
+// Redirects to /rollerofstation/:rollerstation_id after success
 
-const Roller = require('../../models/roller');
 const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
@@ -14,8 +12,8 @@ module.exports = function(objectrepository) {
             typeof req.body.type === 'undefined' ||
             typeof req.body.id === 'undefined' ||
             typeof req.body.brand === 'undefined' ||
-            typeof res.locals.price === 'undefined' ||
-            typeof res.locals.available === 'undefined'
+            typeof req.body.price === 'undefined' ||
+            typeof req.body.available === 'undefined'
         ) {
             return next();
         }
@@ -24,22 +22,40 @@ module.exports = function(objectrepository) {
             res.locals.roller = new RollerModel();
         }
 
-        if (Number.isNaN(parseInt(req.body.price, 10))) {
-            return next(new Error('Az árat egy számmal kell megadni!'));
+        if (Number.isNaN(parseInt(req.body.id, 10))) {
+            res.locals.error = 'Invalid datas';
+            return next();
         }
-        
+        if (Number.isNaN(parseInt(req.body.price, 10))) {
+            res.locals.error = 'Invalid datas';
+            return next();
+        }
+
         res.locals.roller.type = req.body.type;
-        res.locals.roller.id = req.body.id;
+        res.locals.roller.id = parseInt(req.body.id, 10);
         res.locals.roller.brand = req.body.brand;
         res.locals.roller.price = parseInt(req.body.price, 10);
-        res.locals.roller.available = req.body.available;
-        res.locals.roller._rental = res.locals.nagymama._id;
-
-        res.locals.roller.save(err => {
-            if (err) {
-                return next(err);
-            }
-            return res.redirect(`/roller/${res.locals.rollerstation._id}`);
-        });
+        if (req.body.available == 'on') {
+            res.locals.roller.available = true;
+        } else {
+            res.locals.roller.available = false;
+        }
+        res.locals.roller._rental = res.locals.rollerstation._id;
+        
+        res.locals.roller
+            .save()
+            .then(() => {
+                return res.redirect(`/roller/${res.locals.rollerstation._id}`);
+            })
+            .catch(Error => {
+                res.locals.error = 'Invalid datas';
+                return next();
+            });
     };
 };
+
+
+
+
+
+

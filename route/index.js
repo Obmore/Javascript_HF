@@ -27,68 +27,72 @@ module.exports = function(app) {
     };
 
     // Routes:
-    app.use(
-        '/rollerstation/new',
+    // Station:
+
+    app.use('/rollerstation/new',
         authMW(objRepo),
         saveRollerStationMW(objRepo),
-        renderMW(objRepo, 'rollerstationeditnew')
+        renderMW(objRepo, 'newrollerstation')
     );
-    app.use(
-        '/roller/edit/:rollerstationid',
+
+    app.use('/rollerstation/edit/:rollerstationid',
         authMW(objRepo),
         getRollerStationMW(objRepo),
         saveRollerStationMW(objRepo),
-        renderMW(objRepo, 'rollerstationeditnew')
+        renderMW(objRepo, 'newrollerstation')
     );
-    app.get(
-        '/rollerstation/del/:rollerstationid',
+
+    app.get('/rollerstation/del/:rollerstationid',
         authMW(objRepo),
         getRollerStationMW(objRepo),
         delRollerStationMW(objRepo)
     );
-    app.get(
-        '/rollerstation',
+
+    app.get('/rollerstation',
         authMW(objRepo),
         getRollerStationsMW(objRepo),
-        renderMW(objRepo, 'rollerstationlista')
+        renderMW(objRepo, 'rollerstation')
     );
 
-    app.use(
-        '/roller/:rollerstationid/new',
+
+    // Roller:
+    app.use('/roller/:rollerstationid/new',
         authMW(objRepo),
         getRollerStationMW(objRepo),
         saveRollerMW(objRepo),
-        renderMW(objRepo, 'rollereditnew')
+        renderMW(objRepo, 'newroller')
     );
-    app.use(
-        '/roller/:rollerstationid/edit/:rollerid',
+
+    app.use('/roller/:rollerstationid/edit/:rollerid',
         authMW(objRepo),
         getRollerStationMW(objRepo),
         getRollerMW(objRepo),
         saveRollerMW(objRepo),
-        renderMW(objRepo, 'rollereditnew')
+        renderMW(objRepo, 'newroller')
     );
-    app.get(
-        '/roller/:rollerstationid/del/:rollerid',
+
+    app.get('/roller/:rollerstationid/del/:rollerid',
         authMW(objRepo),
         getRollerStationMW(objRepo),
         getRollerMW(objRepo),
         delRollerMW(objRepo),
-        renderMW(objRepo, 'rollereditnew')
+        renderMW(objRepo, 'newroller')
     );
-    app.get(
-        '/roller/:rollerstationid',
+
+    app.get('/roller/:rollerstationid',
         authMW(objRepo),
         getRollerStationMW(objRepo),
         getRollersMW(objRepo),
-        renderMW(objRepo, 'rollersofrollerstation')
+        renderMW(objRepo, 'rollerofstation')
     );
 
+    // General:
     app.use('/logout', 
-    logoutMW(objRepo)
+        logoutMW(objRepo)
     );
 
     app.use('/',
-    checkPassMW(objRepo), 
-    renderMW(objRepo, 'login'));
+        checkPassMW(objRepo), 
+        renderMW(objRepo, 'login')
+    );
 };

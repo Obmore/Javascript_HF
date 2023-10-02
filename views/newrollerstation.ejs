@@ -11,6 +11,9 @@
                     Edit
                 <% } %>
             </h2>
+            <% if (typeof error !== 'undefined') { %>
+                <div class="alert alert-danger"><%= error %></div>
+            <% } %>
             <form method="post">
                 <div class="form-group">
                     <label for="address">Address</label>

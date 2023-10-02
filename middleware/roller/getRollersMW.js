@@ -8,12 +8,13 @@ module.exports = function(objectrepository) {
         if (typeof res.locals.rollerstation === 'undefined') {
             return next();
         }
-        RollerModel.find({ _rental: res.locals.rollerstation._id }, (err, rollers) => {
-            if (err) {
+        RollerModel.find({ _rental: res.locals.rollerstation._id })
+            .then(rollers => {
+                res.locals.rollers = rollers;
+                return next();
+            })
+            .catch(err => {
                 return next(err);
-            }
-            res.locals.rollers = rollers;
-            return next();
-        });
+            });
     };
 };
