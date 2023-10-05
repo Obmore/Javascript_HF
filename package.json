@@ -4,7 +4,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "mongodb": "^6.1.0",
-    "mongoose": "^7.5.3"
+    "mongoose": "^7.5.4"
   },
   "name": "javascript_hf",
   "description": "Az alábbi szerver oldali javascript program egy roller dokkoló állomást valósít meg, amelyekhez különböző márkáju rollereket tudunk hozzáadni.",
