@@ -40,11 +40,11 @@
                 <div class="form-group">
                     <label for="available">Available</label>
                     <div class="form-check form-check-lg">
-                        <input type="checkbox" class="form-check-input" id="available" name="available"
-                            value ="<%= (typeof roller !== 'undefined' && roller.available) ? 'on' : '' %>">
+                        <input type="checkbox" class="form-check-input" id="available" name="available" 
+                        <% if (typeof roller !== 'undefined' && roller.available) { %>checked<% } %>>
                         <label class="form-check-label" for="available">Yes, it's available</label>
                     </div>
-                </div>                               
+                </div>                         
                 <input type="submit" class="btn btn-primary" value="Save"/>
                 <a class="btn btn-link" href="/roller/<%= rollerstation._id %>">Cancel</a>
             </form>

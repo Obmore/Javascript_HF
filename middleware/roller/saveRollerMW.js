@@ -3,6 +3,7 @@
 // Redirects to /rollerofstation/:rollerstation_id after success
 
 const requireOption = require('../requireOption');
+    
 
 module.exports = function(objectrepository) {
     const RollerModel = requireOption(objectrepository, 'RollerModel');
@@ -12,8 +13,7 @@ module.exports = function(objectrepository) {
             typeof req.body.type === 'undefined' ||
             typeof req.body.id === 'undefined' ||
             typeof req.body.brand === 'undefined' ||
-            typeof req.body.price === 'undefined' ||
-            typeof req.body.available === 'undefined'
+            typeof req.body.price === 'undefined'
         ) {
             return next();
         }
@@ -26,7 +26,8 @@ module.exports = function(objectrepository) {
             res.locals.error = 'Invalid datas';
             return next();
         }
-        if (Number.isNaN(parseInt(req.body.price, 10))) {
+
+        if (Number.isNaN(parseFloat(req.body.price, 10))) {
             res.locals.error = 'Invalid datas';
             return next();
         }
@@ -34,13 +35,10 @@ module.exports = function(objectrepository) {
         res.locals.roller.type = req.body.type;
         res.locals.roller.id = parseInt(req.body.id, 10);
         res.locals.roller.brand = req.body.brand;
-        res.locals.roller.price = parseInt(req.body.price, 10);
-        if (req.body.available == 'on') {
-            res.locals.roller.available = true;
-        } else {
-            res.locals.roller.available = false;
-        }
+        res.locals.roller.price = parseFloat(req.body.price, 10);
+        res.locals.roller.available = req.body.available == 'on'
         res.locals.roller._rental = res.locals.rollerstation._id;
+       
         
         res.locals.roller
             .save()

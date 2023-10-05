@@ -28,7 +28,8 @@
                 <div class="form-group">
                     <label for="capacity">Capacity</label>
                     <input type="text" class="form-control" id="capacity" name="capacity"
-                            value="<%= (typeof rollerstation === 'undefined') ? '' : rollerstation.capacity %>">
+                            value="<%= (typeof rollerstation === 'undefined') ? '' : rollerstation.capacity %>"
+                            readonly>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Save"/>
                 <a class="btn btn-link" href="/rollerstation">Cancel</a>

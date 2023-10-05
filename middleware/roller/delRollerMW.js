@@ -11,7 +11,7 @@ module.exports = function(objectrepository) {
             return next();
         }
 
-        RollerModel.findOneAndDelete({ _rental: res.locals.rollerstation._id })
+        RollerModel.findOneAndDelete(res.locals.roller)
             .then(() => {
                 return res.redirect(`/roller/${res.locals.rollerstation._id}`);
             })
