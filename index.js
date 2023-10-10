@@ -21,7 +21,7 @@ require('./route/index')(app);
 
 
 app.use((err, req, res, next) => {
-    res.end('Problem...');
+    res.end('Something is wrong');
     console.log(err);
 });
 
